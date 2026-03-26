@@ -44,16 +44,20 @@
 - `template/AGENTS.md`
 - `template/_harness/*`
 
-是给 `npx agents-md-harness init` 生成出去的模板。
+是给 `npx agents-md-harness setup` 生成出去的模板（`init` 作为兼容别名保留）。
 
 ## 快速开始
+
+主命令：`setup`
+
+兼容别名：`init`
 
 ### 用 npx 初始化
 
 ```bash
-npx agents-md-harness init
-npx agents-md-harness init my-project
-npx agents-md-harness init my-project --force
+npx agents-md-harness setup
+npx agents-md-harness setup my-project
+npx agents-md-harness setup my-project --force
 ```
 
 ### 仓库开发（pnpm 10）

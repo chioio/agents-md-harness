@@ -40,7 +40,7 @@ Use this layer for:
 
 ### 2) Template output
 
-These files are the **user-facing template** copied into another project by `init`:
+These files are the **user-facing template** copied into another project by `setup` (with `init` kept as a compatibility alias):
 
 ```text
 template/
@@ -55,7 +55,7 @@ template/
 
 Use this layer for:
 
-- defining what end users get from `npx agents-md-harness init`
+- defining what end users get from `npx agents-md-harness setup`
 - evolving the starter harness template
 - preserving a clean generated output independent from this repo's internal maintainer instructions
 
@@ -94,21 +94,25 @@ That remains the product idea — but in this repository, the root-level harness
 AGENTS.md                  # maintainer entrypoint for this repo
 _harness/                  # maintainer-side harness for this repo
 bin/                       # CLI implementation
-template/                  # generated template copied by init
+template/                  # generated template copied by setup
 README.md                  # public repo documentation
 ```
 
 ## CLI
+
+Primary command: `setup`
+
+Compatibility alias: `init`
 
 This package ships a minimal CLI so users can initialize the harness via `npx` or a local package path.
 
 ### Usage
 
 ```bash
-npx agents-md-harness init
-npx agents-md-harness init my-project
-npx agents-md-harness init my-project --force
-npx file:. init my-project
+npx agents-md-harness setup
+npx agents-md-harness setup my-project
+npx agents-md-harness setup my-project --force
+npx file:. setup my-project
 ```
 
 ### What it creates
@@ -151,7 +155,7 @@ Quick CLI check:
 
 ```bash
 pnpm test:cli
-npx file:. init ./tmp/fixture-from-file --force
+npx file:. setup ./tmp/fixture-from-file --force
 ```
 
 Create a changeset for publishable changes:
@@ -261,7 +265,7 @@ The current version defines:
 - the basic generated file layout
 - the role of each template file
 - a separate maintainer-side harness for repository development
-- a minimal `npx agents-md-harness init` bootstrap flow
+- a minimal `npx agents-md-harness setup` bootstrap flow
 - baseline formatting and release automation
 
 ## Tagline

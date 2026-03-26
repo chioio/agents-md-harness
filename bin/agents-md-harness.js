@@ -11,11 +11,13 @@ function printHelp() {
   console.log(`agents-md-harness v${VERSION}
 
 Usage:
-  agents-md-harness init [targetDir] [--force]
+  agents-md-harness setup [targetDir] [--force]
+  agents-md-harness init [targetDir] [--force]   # compatibility alias
   agents-md-harness --help
 
 Commands:
-  init       Initialize an AGENTS.md-harness template into targetDir
+  setup      Initialize an AGENTS.md-harness template into targetDir
+  init       Compatibility alias for setup
 
 Options:
   --force    Overwrite existing files in the target directory
@@ -65,7 +67,7 @@ function main(argv) {
 
   const command = args[0];
 
-  if (command !== "init") {
+  if (command !== "setup" && command !== "init") {
     console.error(`Unknown command: ${command}`);
     printHelp();
     process.exitCode = 1;
