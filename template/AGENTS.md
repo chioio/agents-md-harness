@@ -20,3 +20,8 @@ Classify the task, then load only the minimum relevant documents from `_harness/
 - Load the most relevant file first.
 - Combine multiple files only when the task truly needs them.
 - Treat this repository as a prototype for turning `AGENTS.md` into an agent-usable harness.
+
+## Memory
+
+- Shared long-term memory lives in `_harness/memory/project.md`.
+- Per-agent short-term memory lives in `_harness/memory/agents/*.local.md`.

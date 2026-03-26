@@ -267,3 +267,12 @@ The current version defines:
 ## Tagline
 
 **Make agents use AGENTS.**
+
+## Memory Model
+
+Generated templates include a memory layer:
+
+- `_harness/memory/project.md` — shared long-term project memory
+- `_harness/memory/agents/*.local.md` — per-agent short-term local memory
+
+Short-term agent memory is intentionally gitignored in the template.

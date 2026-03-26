@@ -16,3 +16,8 @@ It holds modular instruction documents that an agent can load on demand instead 
 - `CATALOG.md` — structure and module lookup
 - `RULES.md` — hard constraints and behavior rules
 - `WORKFLOW.md` — execution flows and procedures
+
+## Memory
+
+- `memory/project.md` stores durable shared project memory
+- `memory/agents/*.local.md` stores per-agent short-term working memory and should stay local

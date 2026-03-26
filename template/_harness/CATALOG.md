@@ -11,3 +11,8 @@
 - `ROUTING.md` — task-to-file dispatch
 - `RULES.md` — constraints and boundaries
 - `WORKFLOW.md` — standard execution flow
+
+## Memory
+
+- `_harness/memory/project.md` — shared long-term project memory
+- `_harness/memory/agents/*.local.md` — per-agent short-term local memory

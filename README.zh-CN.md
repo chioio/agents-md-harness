@@ -95,3 +95,12 @@ _harness/
 ## 英文文档
 
 主 README：[`README.md`](./README.md)
+
+## Memory 模型
+
+生成出来的 template 会包含 memory 层：
+
+- `_harness/memory/project.md` —— 项目共享的长期记忆
+- `_harness/memory/agents/*.local.md` —— 按 agent 划分的短期本地记忆
+
+短期 agent memory 会在 template 里默认 gitignore。
