@@ -2,6 +2,8 @@
 
 > 🪄 Turn `AGENTS.md` into an agent-usable harness.
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 `AGENTS.md-harness` explores a simple idea:
 
 Instead of treating `AGENTS.md` as one large static prompt file, treat it as a thin entrypoint that routes an agent into a modular instruction harness.
@@ -135,39 +137,39 @@ _harness/
 Install dependencies:
 
 ```bash
-npm install
+ppnpm install
 ```
 
 Run the formatter:
 
 ```bash
-npm run format
-npm run format:check
+pnpm format
+pnpm format:check
 ```
 
 Quick CLI check:
 
 ```bash
-npm run test:cli
+pnpm test:cli
 npx file:. init ./tmp/fixture-from-file --force
 ```
 
 Create a changeset for user-facing changes:
 
 ```bash
-npm run changeset
+pnpm changeset
 ```
 
 Apply pending changesets locally:
 
 ```bash
-npm run version-packages
+pnpm version-packages
 ```
 
 Publish from a properly configured environment:
 
 ```bash
-npm run release
+pnpm release
 ```
 
 ## Release flow
@@ -177,8 +179,8 @@ This repository uses [Changesets](https://github.com/changesets/changesets) for 
 ### Maintainer workflow
 
 1. Make your code or documentation changes.
-2. Run `npm run format`.
-3. Add a changeset with `npm run changeset` for any publishable change.
+2. Run `pnpm format`.
+3. Add a changeset with `pnpm changeset` for any publishable change.
 4. Open or update a PR.
 5. After merge to `main`, GitHub Actions updates or creates a release PR with version bumps.
 6. Merge the release PR.
