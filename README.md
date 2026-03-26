@@ -276,3 +276,10 @@ Generated templates include a memory layer:
 - `_harness/memory/agents/*.local.md` — per-agent short-term local memory
 
 Short-term agent memory is intentionally gitignored in the template.
+
+## Prompt-first setup
+
+The preferred way to use this harness is prompt-first.
+
+Use `_harness/setup/PROMPT.md` as the conversation entrypoint for a model-driven setup flow.
+Use `_harness/setup/FLOW.md` as the staged setup protocol.

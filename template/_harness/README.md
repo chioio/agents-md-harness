@@ -21,3 +21,10 @@ It holds modular instruction documents that an agent can load on demand instead 
 
 - `memory/project.md` stores durable shared project memory
 - `memory/agents/*.local.md` stores per-agent short-term working memory and should stay local
+
+## Prompt-first setup
+
+The preferred way to use this harness is prompt-first.
+
+Use `_harness/setup/PROMPT.md` as the conversation entrypoint for a model-driven setup flow.
+Use `_harness/setup/FLOW.md` as the staged setup protocol.

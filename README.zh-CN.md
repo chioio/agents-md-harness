@@ -104,3 +104,10 @@ _harness/
 - `_harness/memory/agents/*.local.md` —— 按 agent 划分的短期本地记忆
 
 短期 agent memory 会在 template 里默认 gitignore。
+
+## Prompt-first setup
+
+推荐优先使用提示词驱动，而不是手动写文件。
+
+- `_harness/setup/PROMPT.md`：给模型的 setup 入口提示词
+- `_harness/setup/FLOW.md`：分阶段 setup 流程

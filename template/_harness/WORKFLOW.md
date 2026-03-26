@@ -10,3 +10,9 @@
 
 - Update shared durable knowledge in `_harness/memory/project.md` when it becomes project-relevant.
 - Keep temporary agent context in `_harness/memory/agents/<agent>.local.md`.
+
+## Setup workflow
+
+- Prefer prompt-first setup over manual file authoring.
+- Use `_harness/setup/PROMPT.md` to enter setup mode.
+- Use `_harness/setup/FLOW.md` to structure the conversation and outputs.
