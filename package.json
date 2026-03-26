@@ -1,0 +1,48 @@
+{
+  "name": "agents-md-harness",
+  "version": "0.1.0",
+  "description": "Minimal npx CLI to template an AGENTS.md-harness skeleton.",
+  "keywords": [
+    "agents",
+    "cli",
+    "harness",
+    "npx",
+    "template"
+  ],
+  "homepage": "https://github.com/chioio/agents-md-harness#readme",
+  "bugs": {
+    "url": "https://github.com/chioio/agents-md-harness/issues"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chioio/agents-md-harness.git"
+  },
+  "bin": {
+    "agents-md-harness": "bin/agents-md-harness.js"
+  },
+  "files": [
+    "bin",
+    "template",
+    "AGENTS.md",
+    "_harness",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "commonjs",
+  "scripts": {
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
+    "format": "oxfmt .",
+    "format:check": "oxfmt --check .",
+    "test:cli": "node ./bin/agents-md-harness.js init ./tmp/fixture --force"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.30.0",
+    "oxfmt": "^0.42.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

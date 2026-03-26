@@ -1,20 +1,28 @@
 # AGENTS.md
 
-This repository defines an instruction harness for agents.
+This `AGENTS.md` is for working on the `agents-md-harness` repository itself.
+It is **not** the template that end users generate with `npx agents-md-harness init`.
 
-Read this file first, but do not assume you must read everything.
-Classify the task, then load only the minimum relevant documents from `_harness/`.
+Before acting, classify the task into one of these repo-maintainer modes:
+
+- **Product/code work** -> CLI behavior, packaging, tests, release flow
+- **Template work** -> files under `template/` that are copied into user projects
+- **Docs work** -> repository documentation and maintainer guidance
+- **Release/publish work** -> versioning, packaging, npm/GitHub release concerns
+
+Then load only the minimum relevant documents from `_harness/`.
 
 ## Routing
-- Project overview and quick orientation -> `_harness/README.md`
-- Task-to-file routing -> `_harness/ROUTING.md`
-- Project/module structure lookup -> `_harness/CATALOG.md`
-- Hard rules and constraints -> `_harness/RULES.md`
-- Execution procedures and task flows -> `_harness/WORKFLOW.md`
 
-## Loading Principles
-- Prefer minimum necessary reads.
-- Route before loading.
-- Load the most relevant file first.
-- Combine multiple files only when the task truly needs them.
-- Treat this repository as a prototype for turning `AGENTS.md` into an agent-usable harness.
+- Repo overview and boundary between repo-vs-template -> `_harness/README.md`
+- Find code, template files, and publishable assets -> `_harness/CATALOG.md`
+- Check maintainer constraints and editing boundaries -> `_harness/RULES.md`
+- Follow task procedures for repo edits, template edits, and validation -> `_harness/WORKFLOW.md`
+
+## Loading principles
+
+- Treat the repository root as **maintainer instructions for this repo**.
+- Treat `template/` as **user-facing output templates**.
+- Do not edit template files just to change how this repository should be operated.
+- Keep repo-maintainer guidance in root `AGENTS.md` and root `_harness/*`.
+- Load the smallest useful instruction set before making changes.
