@@ -28,3 +28,7 @@ The preferred way to use this harness is prompt-first.
 
 Use `_harness/setup/PROMPT.md` as the conversation entrypoint for a model-driven setup flow.
 Use `_harness/setup/FLOW.md` as the staged setup protocol.
+
+## GC
+
+This template includes a GC layer under `gc/` so the harness can prune stale short-term context and compress long-term knowledge over time.

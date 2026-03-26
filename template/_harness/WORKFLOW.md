@@ -16,3 +16,9 @@
 - Prefer prompt-first setup over manual file authoring.
 - Use `_harness/setup/PROMPT.md` to enter setup mode.
 - Use `_harness/setup/FLOW.md` to structure the conversation and outputs.
+
+## GC workflow
+
+- Periodically run harness GC to keep memory and guidance compact.
+- Clean short-term local memory aggressively.
+- Keep long-term memory durable and high-signal.

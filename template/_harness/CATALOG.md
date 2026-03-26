@@ -21,3 +21,9 @@
 
 - `_harness/setup/PROMPT.md` — prompt-first setup entrypoint
 - `_harness/setup/FLOW.md` — staged setup conversation flow
+
+## GC
+
+- `_harness/gc/README.md` — why GC exists in the harness
+- `_harness/gc/POLICY.md` — GC policy for memory and harness files
+- `_harness/gc/FLOW.md` — staged GC process

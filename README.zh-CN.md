@@ -111,3 +111,7 @@ _harness/
 
 - `_harness/setup/PROMPT.md`：给模型的 setup 入口提示词
 - `_harness/setup/FLOW.md`：分阶段 setup 流程
+
+## GC
+
+模板现在包含 `_harness/gc/`，用来清理过期短期记忆、压缩长期项目知识，避免 harness 越长越脏。
