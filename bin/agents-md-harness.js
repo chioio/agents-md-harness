@@ -53,7 +53,15 @@ function runInit(targetArg, force) {
   const targetDir = path.resolve(process.cwd(), targetArg || ".");
   ensureDir(targetDir);
   copyDir(TEMPLATE_ROOT, targetDir, force);
-  console.log(`Initialized AGENTS.md-harness template into ${targetDir}`);
+  console.log(`✓ Initialized AGENTS.md-harness template into ${targetDir}
+
+Next steps:
+1. cd ${path.relative(process.cwd(), targetDir) || "."}
+2. Ask your AI agent: "Help me setup the harness"
+3. The agent will guide you through a conversation to generate customized harness files
+
+The harness files will be created in _harness/ based on your project needs.
+`);
 }
 
 function main(argv) {

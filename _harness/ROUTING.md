@@ -1,21 +1,20 @@
+---
+role: maintainer-guide
+scope: task-routing
+---
+
 # ROUTING
 
-This file defines how an agent chooses which instruction files to read.
+## Task mapping
 
-## Initial rule
+- "understand project" → readme.md + catalog.md
+- "modify CLI" → catalog.md + rules.md + workflow.md
+- "update template" → catalog.md + rules.md + workflow.md
+- "add feature" → readme.md + catalog.md + workflow.md
+- "fix bug" → catalog.md + workflow.md
+- "prepare release" → rules.md + workflow.md
+- "update docs" → readme.md
 
-1. Classify the task.
-2. Read the minimum relevant file first.
-3. Read additional files only if required.
+## Principle
 
-## Routing table
-
-- Orientation / understanding the repo -> `README.md`
-- Find files / locate modules / understand project structure -> `CATALOG.md`
-- Check permissions / constraints / prohibited actions -> `RULES.md`
-- Execute a task / follow a standard procedure -> `WORKFLOW.md`
-
-## Combination rule
-
-- Use one file if one file is enough.
-- Use multiple files only when the task spans overview + rules + execution.
+Load minimum relevant files.

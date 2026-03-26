@@ -6,17 +6,22 @@ Use this prompt to let a model drive harness setup through conversation.
 
 You are setting up an AGENTS.md harness for this project.
 
-Your job is to guide the user through a short setup conversation, understand the project, and then create or refine:
+Your job is to guide the user through a short setup conversation, understand the project, and then generate:
 
-- `AGENTS.md`
-- `_harness/README.md`
-- `_harness/ROUTING.md`
-- `_harness/CATALOG.md`
-- `_harness/RULES.md`
-- `_harness/WORKFLOW.md`
+- `_harness/readme.md`
+- `_harness/routing.md`
+- `_harness/catalog.md`
+- `_harness/rules.md`
+- `_harness/workflow.md`
 - `_harness/memory/project.md`
 
-If the project already has `AGENTS.md`, do not overwrite it blindly. First read and absorb it, then refine and reorganize where appropriate.
+Use the templates in `_harness/setup/templates/` as generation guides. Each template explains:
+
+- What the file should contain
+- What questions to ask the user
+- How to structure the generated content
+
+If the project already has existing harness files, read them first, then refine based on user input.
 
 ## Setup priorities
 
@@ -28,11 +33,13 @@ If the project already has `AGENTS.md`, do not overwrite it blindly. First read 
 
 ## Conversation rules
 
-- Ask concise questions.
-- Prefer one small batch of questions at a time.
-- Summarize before writing files.
-- Write files only after the user confirms or the direction is clear enough.
-- If information is missing, choose minimal defaults and state them.
+- **CRITICAL**: Do NOT generate any files until you have collected user input
+- Ask concise questions one stage at a time
+- Wait for user responses before proceeding to next stage
+- Prefer one small batch of questions at a time
+- Summarize collected information before generating files
+- Only generate files after user confirms the summary or direction is clear
+- If information is missing, ask the user instead of assuming defaults
 
 ## Suggested setup stages
 

@@ -1,47 +1,35 @@
-# CATALOG
+---
+role: maintainer-guide
+scope: structure-lookup
+---
 
-This file is the structural index for the `agents-md-harness` repository.
+# CATALOG
 
 ## Root
 
-- `AGENTS.md` — maintainer entrypoint for working on this repository
-- `README.md` — public repository documentation
-- `package.json` — package metadata, scripts, publish surface
-- `package-lock.json` — npm lockfile
-- `LICENSE` — package license
-- `bin/` — CLI entrypoint implementation
-- `template/` — user-facing files copied by `init`
-- `_harness/` — maintainer-side modular instructions for this repo
-- `.changeset/` — release notes and versioning metadata
-- `.github/` — release automation workflows
+- `AGENTS.md` — maintainer entrypoint
+- `_harness/` — maintainer harness
+- `template/` — user-facing template
 
-## Maintainer harness modules
+## CLI
 
-- `_harness/README.md` — repo-self-use overview and boundary model
-- `_harness/CATALOG.md` — repository map
-- `_harness/RULES.md` — edit constraints and responsibility boundaries
-- `_harness/WORKFLOW.md` — task procedures and validation patterns
+- `bin/agents-md-harness.js` — CLI entry
+- Supports `init` and `setup` commands
 
-## CLI implementation
+## Template
 
-- `bin/agents-md-harness.js` — `init` command implementation
-  - resolves package root
-  - uses `template/` as the copy source
-  - copies template files into the chosen target directory
+- `template/AGENTS.md` — user entrypoint
+- `template/_harness/setup/` — setup framework
+- `template/_harness/setup/templates/` — generation templates for harness files
+- `template/_harness/gc/` — GC logic
+- `template/_harness/memory/` — memory dirs
 
-## User template output
+## Maintainer harness
 
-- `template/AGENTS.md` — generated entrypoint for end-user projects
-- `template/_harness/README.md` — generated harness overview
-- `template/_harness/ROUTING.md` — generated routing rules
-- `template/_harness/CATALOG.md` — generated structure index
-- `template/_harness/RULES.md` — generated constraint rules
-- `template/_harness/WORKFLOW.md` — generated task flow
-
-## Change surface guide
-
-- Change root `AGENTS.md` or root `_harness/*` when changing **repo maintainer guidance**.
-- Change `README.md` when changing **public documentation of the package/repo**.
-- Change `template/*` when changing **what `init` generates for users**.
-- Change `bin/*` when changing **CLI behavior**.
-- Add a changeset when the package behavior or user-visible docs change in a publish-relevant way.
+- `_harness/readme.md` — project context
+- `_harness/catalog.md` — structure lookup
+- `_harness/rules.md` — maintainer constraints
+- `_harness/routing.md` — task routing
+- `_harness/workflow.md` — development workflows
+- `_harness/gc/` — GC policy and flow
+- `_harness/memory/` — project and agent memory

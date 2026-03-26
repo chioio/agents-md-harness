@@ -1,39 +1,40 @@
+---
+role: maintainer-guide
+scope: project-context
+---
+
 # README
 
-This `_harness/` directory documents how to work on the `agents-md-harness` repository itself.
+This harness is for maintaining the `agents-md-harness` repository itself.
 
-It is the maintainer-side harness for:
+## Purpose
 
-- developing the CLI
-- maintaining the user template files in `template/`
-- updating documentation
-- validating packaging and release behavior
+- Guide agents working on CLI development
+- Separate repo maintenance from template design
+- Keep maintainer instructions distinct from user-facing templates
 
-## Critical boundary
+## Project context
 
-There are **two distinct instruction layers** in this repo:
+**What this project does:**
 
-1. **Repo self-use harness**
-   - files: root `AGENTS.md` and root `_harness/*`
-   - audience: agents or maintainers working on this repository
-   - purpose: describe how to change, test, release, and document this package
+- Provides a CLI tool to bootstrap AGENTS.md harness frameworks
+- Defines a modular instruction system for AI agents
+- Separates static framework from generated content
 
-2. **Generated user template**
-   - files: `template/AGENTS.md` and `template/_harness/*`
-   - audience: end users running `npx agents-md-harness init`
-   - purpose: provide a starter AGENTS.md harness for a user project
+**Key technologies:**
 
-## Maintainer expectation
+- Node.js CLI (CommonJS)
+- Changesets for versioning
+- GitHub Actions for automated releases
 
-When editing this repository:
+**Team model:**
 
-- update root docs for repository behavior
-- update `template/` only when changing what users should receive
-- keep the distinction explicit in docs and structure
-- verify the CLI still copies `template/` unchanged into target directories
+- Solo maintainer project
+- Open for contributions
 
-## Related files
+**Agent tasks:**
 
-- `CATALOG.md` — where repo code, template files, and release files live
-- `RULES.md` — hard boundaries for maintainer edits
-- `WORKFLOW.md` — recommended procedures for repo changes and validation
+- CLI feature development
+- Template design and evolution
+- Documentation updates
+- Release management
