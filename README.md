@@ -2,6 +2,8 @@
 
 > 🪄 Turn `AGENTS.md` into an agent-usable harness.
 
+[English](./README.md) | [简体中文](./README.zh-CN.md)
+
 `AGENTS.md-harness` explores a simple idea:
 
 Instead of treating `AGENTS.md` as one large static prompt file, treat it as a thin entrypoint that routes an agent into a modular instruction harness.
@@ -135,73 +137,113 @@ _harness/
 Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 Run the formatter:
 
 ```bash
-npm run format
-npm run format:check
+pnpm format
+pnpm format:check
 ```
 
 Quick CLI check:
 
 ```bash
-npm run test:cli
+pnpm test:cli
 npx file:. init ./tmp/fixture-from-file --force
 ```
 
-Create a changeset for user-facing changes:
+Create a changeset for publishable changes:
 
 ```bash
-npm run changeset
+pnpm changeset
 ```
 
-Apply pending changesets locally:
+Preview pending releases:
 
 ```bash
-npm run version-packages
+pnpm exec changeset status
 ```
 
-Publish from a properly configured environment:
+Apply pending changesets locally if you need to inspect the generated release commit:
 
 ```bash
-npm run release
+pnpm version-packages
 ```
+
+Do not run manual npm publishing from your laptop for normal releases. The GitHub Actions release flow is the source of truth.
 
 ## Release flow
 
 This repository uses [Changesets](https://github.com/changesets/changesets) for versioning and npm publishing.
 
-### Maintainer workflow
+### Recommended branch model
 
-1. Make your code or documentation changes.
-2. Run `npm run format`.
-3. Add a changeset with `npm run changeset` for any publishable change.
-4. Open or update a PR.
-5. After merge to `main`, GitHub Actions updates or creates a release PR with version bumps.
-6. Merge the release PR.
-7. After that merge lands on `main`, the publish workflow runs `changeset publish`.
+- `main` is the only branch that matters to the automated release flow.
+- feature branches can open PRs into `main` as usual.
+- a long-lived `dev` branch is **not required** for standard Changesets releases in this repository.
+
+If you still want a `dev` branch for broader integration testing, keep it as a human workflow choice only. Do not wire publishing or release PR creation to `dev` unless you intentionally redesign the release model.
+
+### Standard maintainer workflow
+
+1. Make code or documentation changes on a feature branch.
+2. Run `pnpm format` and the relevant checks.
+3. Add a changeset with `pnpm changeset` for every publishable change.
+4. Open a PR into `main`.
+5. After that PR merges to `main`, GitHub Actions creates or updates the Changesets release PR on branch `changeset-release/main`.
+6. Review and merge the release PR.
+7. The merge commit from that release PR lands on `main` as `github-actions[bot]`, which triggers the publish workflow.
+8. The publish workflow runs `changeset publish` and publishes the new version to npm.
+
+### Why publish only after the release PR merge
+
+Both workflows trigger on pushes to `main`, but they are intentionally split by actor:
+
+- `changesets-version.yml` runs only for non-bot pushes, which means normal maintainer merges create or update the release PR.
+- `publish.yml` runs only for `github-actions[bot]` pushes, which means only the merged release PR commit can publish.
+
+That prevents normal feature merges from trying to publish immediately, while still keeping the flow fully automatic once the release PR is approved.
+
+### Existing alpha and manual release history
+
+The repository currently contains an earlier manual/alpha release step (`0.1.0-alpha.0`) plus a later Changesets-managed release PR branch. Going forward, treat that alpha as historical bootstrap noise:
+
+- do not continue a separate alpha/pre-release lane unless you explicitly add Changesets pre mode
+- do not hand-edit package versions on feature branches
+- do not run ad hoc `pnpm release` as the normal release path
+
+The canonical flow is now: **changeset files in PRs → automated release PR on `main` → merge release PR → automated npm publish**.
 
 ### GitHub Actions included
 
 - `.github/workflows/changesets-version.yml`
-  - creates or updates the release PR on pushes to `main`
+  - runs on pushes to `main` from maintainers
+  - creates or updates the release PR with version bumps and changelog updates
 - `.github/workflows/publish.yml`
-  - publishes to npm on pushes to `main` when version packages are present
+  - runs on pushes to `main` created by `github-actions[bot]`
+  - publishes to npm only after the release PR merge
 
-### Required repository secrets
+### Required GitHub and npm configuration
 
-For npm publishing, configure:
+For the publish workflow to succeed, make sure these settings exist outside the repo:
 
-- `NPM_TOKEN` — npm automation token with publish access to `agents-md-harness`
+1. **GitHub Actions permissions**
+   - repository Actions must be allowed to create and approve pull requests as needed
+   - the default `GITHUB_TOKEN` must have permission to write contents and pull requests
+2. **Branch protection for `main`**
+   - allow the Changesets release PR to merge
+   - if you require status checks, include both workflow checks appropriately
+3. **npm trusted publishing**
+   - add this GitHub repository/workflow as a trusted publisher in npm for the `agents-md-harness` package
+   - `id-token: write` is already configured in the workflow for this path
 
-`GITHUB_TOKEN` is provided automatically by GitHub Actions.
+If trusted publishing is not configured, the publish job will fail even though the workflow YAML is correct.
 
 ## Commit convention
 
-This repository follows Conventional Commits and is compatible with `@commitlint/config-conventional`.
+This repository follows Conventional Commits.
 
 Recommended examples:
 

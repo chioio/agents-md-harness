@@ -9,8 +9,13 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: changesets-version-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   version:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -18,20 +23,23 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
-          cache: npm
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Create or update version PR
+      - name: Create or update release PR
         uses: changesets/action@v1
         with:
-          version: npm run version-packages
+          version: pnpm version-packages
           commit: "chore(release): version packages"
           title: "chore(release): version packages"
         env:
