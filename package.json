@@ -24,8 +24,6 @@
   "files": [
     "bin",
     "template",
-    "AGENTS.md",
-    "_harness",
     "README.md",
     "LICENSE"
   ],
