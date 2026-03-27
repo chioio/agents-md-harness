@@ -50,7 +50,7 @@
 
 主命令：`setup`
 
-兼容别名：`init`
+兼容旧别名：`init`
 
 ### 用 npx 初始化
 
@@ -113,8 +113,8 @@ _harness/
 
 推荐优先使用提示词驱动，而不是手动写文件。
 
-- `_harness/setup/PROMPT.md`：给模型的 setup 入口提示词
-- `_harness/setup/FLOW.md`：分阶段 setup 流程
+- `_harness/.setup/PROMPT.md`：给模型的 setup 入口提示词
+- `_harness/.setup/FLOW.md`：分阶段 setup 流程
 
 ## GC
 

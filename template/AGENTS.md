@@ -4,7 +4,7 @@ This repository uses an AGENTS.md harness system.
 
 ## How to use this file
 
-**If you just ran `npx agents-md-harness init`:**
+**If you just ran `npx agents-md-harness setup`** (or the legacy `init` alias):
 
 You now have the harness framework, but the core files don't exist yet. Tell your AI agent:
 
@@ -24,7 +24,7 @@ If `_harness/` core files (readme.md, routing.md, catalog.md, rules.md, workflow
 
 ### Setup conversation steps:
 
-1. Read `_harness/setup/PROMPT.md` and `_harness/setup/FLOW.md`
+1. Read `_harness/.setup/PROMPT.md` and `_harness/.setup/FLOW.md`
 2. Tell the user: "I need to set up the harness through a conversation. Let me ask you some questions."
 3. Go through each stage in FLOW.md, asking questions and waiting for responses:
    - Stage 1: Project understanding
@@ -32,7 +32,7 @@ If `_harness/` core files (readme.md, routing.md, catalog.md, rules.md, workflow
    - Stage 3: Structure and rules
    - Stage 4: Memory model
 4. After collecting all answers, summarize and ask: "Should I generate the harness files with this configuration?"
-5. Only after user confirms, generate files using templates in `_harness/setup/templates/`
+5. Only after user confirms, generate files using templates in `_harness/.setup/templates/`
 
 **Files to generate:**
 

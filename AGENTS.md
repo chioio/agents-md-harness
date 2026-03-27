@@ -1,7 +1,7 @@
 # AGENTS.md
 
 This `AGENTS.md` is for working on the `agents-md-harness` repository itself.
-It is **not** the template that end users generate with `npx agents-md-harness init`.
+It is **not** the template that end users generate with `npx agents-md-harness setup`.
 
 ## Task classification
 

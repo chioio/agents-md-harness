@@ -52,7 +52,7 @@ Default model:
 
 ## Stage 5 — Generate files
 
-Using templates in `_harness/setup/templates/`, generate:
+Using templates in `_harness/.setup/templates/`, generate:
 
 1. `_harness/readme.md` — project context and harness overview
 2. `_harness/catalog.md` — project structure based on actual directories

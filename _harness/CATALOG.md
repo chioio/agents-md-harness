@@ -14,13 +14,13 @@ scope: structure-lookup
 ## CLI
 
 - `bin/agents-md-harness.js` — CLI entry
-- Supports `init` and `setup` commands
+- Supports `setup` (with legacy `init` alias)
 
 ## Template
 
 - `template/AGENTS.md` — user entrypoint
-- `template/_harness/setup/` — setup framework
-- `template/_harness/setup/templates/` — generation templates for harness files
+- `template/_harness/.setup/` — setup framework
+- `template/_harness/.setup/templates/` — generation templates for harness files
 - `template/_harness/gc/` — GC logic
 - `template/_harness/memory/` — memory dirs
 

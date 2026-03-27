@@ -103,7 +103,7 @@ README.md                  # public repo documentation
 
 Primary command: `setup`
 
-Compatibility alias: `init`
+Legacy compatibility alias: `init`
 
 This package ships a minimal CLI so users can initialize the harness via `npx` or a local package path.
 
@@ -286,8 +286,8 @@ Short-term agent memory is intentionally gitignored in the template.
 
 The preferred way to use this harness is prompt-first.
 
-Use `_harness/setup/PROMPT.md` as the conversation entrypoint for a model-driven setup flow.
-Use `_harness/setup/FLOW.md` as the staged setup protocol.
+Use `_harness/.setup/PROMPT.md` as the conversation entrypoint for a model-driven setup flow.
+Use `_harness/.setup/FLOW.md` as the staged setup protocol.
 
 ## GC
 
