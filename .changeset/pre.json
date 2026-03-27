@@ -4,9 +4,5 @@
   "initialVersions": {
     "agents-md-harness": "0.1.0"
   },
-  "changesets": [
-    "alpha-release",
-    "rename-scaffold-to-template",
-    "tidy-hounds-wave"
-  ]
+  "changesets": ["alpha-release", "rename-scaffold-to-template", "tidy-hounds-wave"]
 }
