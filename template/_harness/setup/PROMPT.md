@@ -14,6 +14,7 @@ Your job is to guide the user through a short setup conversation, understand the
 - `_harness/rules.md`
 - `_harness/workflow.md`
 - `_harness/memory/project.md`
+- `_harness/skills/` (when project-specific skills are needed)
 
 Use the templates in `_harness/setup/templates/` as generation guides. Each template explains:
 

@@ -51,6 +51,7 @@ template/
     CATALOG.md
     RULES.md
     WORKFLOW.md
+    skills/
 ```
 
 Use this layer for:
@@ -291,3 +292,8 @@ Use `_harness/setup/FLOW.md` as the staged setup protocol.
 ## GC
 
 The template includes a GC layer under `_harness/gc/` to help models clean stale local memory and compress long-term project knowledge.
+
+## Harness skills
+
+Project-specific capability units live in `_harness/skills/`.
+Each skill uses **frontmatter + protocol body**: frontmatter for routing, markdown body for execution.
