@@ -36,7 +36,8 @@
     "release": "changeset publish",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
-    "test:cli": "node ./bin/agents-md-harness.js setup ./tmp/fixture --force"
+    "test:cli": "node ./bin/agents-md-harness.js setup ./tmp/fixture --force",
+    "test:harness": "node ./tests/harness/run.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.30.0",

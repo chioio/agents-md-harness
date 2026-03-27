@@ -10,6 +10,8 @@ scope: structure-lookup
 - `AGENTS.md` — maintainer entrypoint
 - `_harness/` — maintainer harness
 - `template/` — user-facing template
+- `samples/` — frontend/backend fixture projects for harness testing
+- `tests/` — repo-level test cases and runners
 
 ## CLI
 

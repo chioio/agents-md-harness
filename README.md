@@ -83,7 +83,7 @@ GC is included so memory and guidance can be pruned, compressed, and kept high-s
 
 ## Sample project
 
-This repo also includes `sample/`, a generated-and-customized sample used to test:
+This repo also includes `samples/fe-todo-app` and `samples/be-todo-app`, generated-and-customized fixtures used to test:
 
 - repeated `setup` runs
 - multi-agent behavior
@@ -120,6 +120,10 @@ The root `AGENTS.md` and root `_harness/` are for maintaining this repository it
 ### Template output
 
 Everything under `template/` is what the CLI copies into user projects.
+
+### Sample fixtures
+
+Everything under `samples/` is for testing and demonstrating generated harness behavior in realistic frontend and backend apps.
 
 ## Status
 

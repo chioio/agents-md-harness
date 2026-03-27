@@ -83,7 +83,7 @@ GC 的存在，就是为了让 memory 和说明层能持续裁剪、压缩、保
 
 ## Sample 样例项目
 
-仓库里还包含 `sample/`，它是一个生成后再定制的样例，用来测试：
+仓库里还包含 `samples/fe-todo-app` 和 `samples/be-todo-app`，它们是生成后再定制的样例，用来测试：
 
 - 重复执行 `setup`
 - multi-agent 行为
@@ -120,6 +120,10 @@ npx file:. setup my-project
 ### 模板输出
 
 `template/` 下的内容，才是 CLI 会复制到用户项目里的内容。
+
+### 样例夹具
+
+`samples/` 下的内容用于测试和演示生成后的 harness 在真实前后端应用中的表现。
 
 ## 当前状态
 

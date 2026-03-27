@@ -9,7 +9,7 @@ scope: constraints
 
 - Root files describe how to maintain this repository.
 - `template/` defines end-user output.
-- `sample/` is a generated-and-customized fixture for testing and demonstration, not the source template.
+- `samples/` contains generated-and-customized fixtures for testing and demonstration; it is not the source template.
 - Do not use template files to express repo-internal maintainer policy.
 - Keep repo-self-use vs template-output language explicit in docs.
 
@@ -38,9 +38,9 @@ scope: constraints
 
 ## Sample rules
 
-- Update `sample/` only when demonstrating or validating intended generated behavior.
-- Do not treat `sample/` as the canonical source of template truth.
-- If template semantics change materially, decide explicitly whether `sample/` also needs to be regenerated or revised.
+- Update `samples/` only when demonstrating or validating intended generated behavior.
+- Do not treat `samples/` as the canonical source of template truth.
+- If template semantics change materially, decide explicitly whether one or more `samples/` fixtures also need to be regenerated or revised.
 
 ## Release rules
 
