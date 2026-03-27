@@ -137,3 +137,8 @@ Current focus:
 ## License
 
 MIT
+
+## Agent integration
+
+The harness keeps agent support lightweight through `_harness/agents.md`.
+It defines integration, role mapping, and memory boundaries without trying to replace the user's existing Codex/Claude/other agent setup.

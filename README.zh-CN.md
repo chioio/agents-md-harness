@@ -137,3 +137,7 @@ npx file:. setup my-project
 ## License
 
 MIT
+
+## Agent 集成
+
+`_harness/agents.md` 只定义 agent 接入、角色映射和 memory 边界，不重做一整套内置 agent 人设。

@@ -32,6 +32,7 @@ scope: structure-lookup
 - `_harness/catalog.md` — structure lookup
 - `_harness/rules.md` — maintainer constraints
 - `_harness/routing.md` — task routing
+- `_harness/agents.md` — agent integration model
 - `_harness/workflow.md` — development workflows
 - `_harness/gc/` — GC policy and flow
 - `_harness/memory/` — project and agent memory

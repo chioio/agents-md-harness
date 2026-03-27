@@ -78,3 +78,5 @@ This harness evolves with the project:
 - Core harness files can be updated through user-approved proposals
 - When harness is insufficient, propose changes and wait for approval
 - See `_harness/rules.md` for evolution rules and risk levels
+
+- Agent integration lives in `_harness/agents.md`.

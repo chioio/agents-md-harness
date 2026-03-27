@@ -38,7 +38,15 @@ Ask:
 - Are there stack-specific commands or conventions?
 - Any hard constraints or preferences?
 
-## Stage 4 — Understand memory
+## Stage 4 — Understand agent integration
+
+Ask:
+
+- Is this a single-agent or multi-agent project?
+- Should the harness integrate with existing local agents?
+- What lightweight roles need to be mapped?
+
+## Stage 5 — Understand memory
 
 Ask:
 
@@ -61,7 +69,7 @@ Using templates in `_harness/.setup/templates/`, generate:
 5. `_harness/workflow.md` — project-specific workflows
 6. `_harness/memory/project.md` — initial project memory
 
-## Stage 6 — Review
+## Stage 7 — Review
 
 Summarize:
 

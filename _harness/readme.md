@@ -44,4 +44,5 @@ This project is an agent-oriented open source tool with two layers:
 - use `routing.md` to choose the smallest useful file set
 - use `rules.md` for boundaries and synchronization rules
 - use `workflow.md` for execution procedures
+- use `agents.md` for lightweight multi-agent integration rules
 - use `catalog.md` for path lookup when touching files across layers

@@ -14,6 +14,7 @@ Your job is to guide the user through a short setup conversation, understand the
 - `_harness/rules.md`
 - `_harness/workflow.md`
 - `_harness/memory/project.md`
+- `_harness/agents.md`
 - `_harness/skills/` (when project-specific skills are needed)
 
 Use the templates in `_harness/.setup/templates/` as generation guides. Each template explains:
@@ -52,3 +53,5 @@ If the project already has existing harness files, read them first, then refine 
 6. Final review
 
 Start by asking the user to describe the project in a few lines.
+
+If the project already uses external agents (for example Codex, Claude, or a custom agent team), integrate with them instead of redefining them from scratch.

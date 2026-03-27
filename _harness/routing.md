@@ -29,3 +29,9 @@ Route by task before loading more files.
 ## Principle
 
 Load the minimum relevant file set, then expand only if the task crosses repo, template, sample, or release boundaries.
+
+## Agent integration routing
+
+- multi-agent questions -> `agents.md`
+- memory ownership questions -> `agents.md` + `memory/project.md`
+- capability questions -> `skills/readme.md`
