@@ -1,3 +1,8 @@
+---
+role: agent-memory
+scope: project
+---
+
 # Project Memory
 
 Long-term project memory.

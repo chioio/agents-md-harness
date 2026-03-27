@@ -1,3 +1,8 @@
+---
+role: agent-instruction
+scope: gc-flow
+---
+
 # GC Flow
 
 ## Stage 1 — Review

@@ -1,3 +1,8 @@
+---
+role: agent-instruction
+scope: gc-overview
+---
+
 # Harness GC
 
 Harness GC is responsible for keeping the harness small, relevant, and maintainable over time.

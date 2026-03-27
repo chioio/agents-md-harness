@@ -1,3 +1,8 @@
+---
+role: agent-instruction
+scope: gc-policy
+---
+
 # GC Policy
 
 ## Short-term memory
