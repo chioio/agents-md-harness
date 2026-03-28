@@ -1,6 +1,6 @@
 {
   "name": "agents-md-harness",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Minimal npx CLI to template an AGENTS.md-harness skeleton.",
   "keywords": [
     "agents",
