@@ -35,7 +35,8 @@
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "test:cli": "node ./bin/agents-md-harness.js setup ./.tmp/fixture --force",
-    "test:harness": "node ./tests/harness/run.js"
+    "test:harness": "node ./tests/harness/run.js",
+    "test:runtime:codex": "node ./tests/runtime/run-codex-eval.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.30.0",

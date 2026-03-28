@@ -32,6 +32,7 @@ scope: structure-lookup
 - `tests/harness/` — structure and contract tests
 - `tests/runtime/README.md` — runtime evaluation workflow
 - `tests/runtime/tasks.json` — fresh-session task corpus
+- `tests/runtime/run-codex-eval.js` — safer nested Codex runtime-eval helper
 
 ## Maintainer harness
 

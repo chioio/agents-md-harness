@@ -35,6 +35,17 @@ This is the primary validation path.
 
 Open a fresh agent session in `samples/todo-app/` and give it a task from `tests/runtime/tasks.json`.
 
+When you must trigger a fresh Codex session from another Codex session, prefer:
+
+```bash
+pnpm test:runtime:codex -- fe-minimal-routing --first-response-only
+```
+
+This keeps JSON progress visible and avoids treating a missing final `-o` file as proof of a hung run.
+The helper also disables OTEL exporters by default for nested Codex runs.
+For smoke checks, prefer `--first-response-only` to stop after the first routing / boundary response.
+Do not use `killall codex` for runtime-eval cleanup.
+
 Check:
 
 - did it start from `AGENTS.md`

@@ -56,6 +56,11 @@ Default runtime scenario: `samples/todo-app`.
 
 - open a fresh agent session in `samples/todo-app`
 - give it a task from `tests/runtime/tasks.json`
+- if you must trigger Codex from Codex, prefer `pnpm test:runtime:codex -- <task-id>`
+- for smoke checks, prefer `pnpm test:runtime:codex -- <task-id> --first-response-only`
+- keep live progress visible; do not rely only on `-o` final-output files while the run is still active
+- disable OTEL exporters for nested runtime eval when the local Codex environment is noisy
+- never use `killall codex` to clean up runtime-eval leftovers
 - check whether it starts from `AGENTS.md`
 - check whether it loads the smallest useful harness set first
 - check whether it routes before reading everything
