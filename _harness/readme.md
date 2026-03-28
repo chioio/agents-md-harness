@@ -18,7 +18,7 @@ It is not the same as the generated user harness under `template/_harness/`.
 
 ## Repository context
 
-This project is an agent-oriented open source tool with two layers:
+This project is an agent-oriented open source tool with three working areas:
 
 1. **Repo self-use layer**
    - root `AGENTS.md`
@@ -30,12 +30,18 @@ This project is an agent-oriented open source tool with two layers:
    - `template/_harness/*`
    - copied into user projects by `setup`
 
+3. **Runtime evaluation layer**
+   - `samples/todo-app`
+   - used to validate harness behavior in fresh-session and multi-agent scenarios
+
 ## What agents commonly do here
 
 - modify CLI behavior in `bin/`
 - evolve the user template in `template/`
+- maintain runtime evaluation assets in `samples/`
 - maintain public docs such as `README.md` and `README.zh-CN.md`
 - validate generated output with `pnpm test:cli`
+- validate sample structure with `pnpm test:harness`
 - maintain release-facing metadata and changesets
 
 ## Reading order
@@ -44,5 +50,5 @@ This project is an agent-oriented open source tool with two layers:
 - use `routing.md` to choose the smallest useful file set
 - use `rules.md` for boundaries and synchronization rules
 - use `workflow.md` for execution procedures
-- use `agents.md` for lightweight multi-agent integration rules
+- use `workflow.md` and `memory/project.md` when multi-agent or memory behavior matters
 - use `catalog.md` for path lookup when touching files across layers

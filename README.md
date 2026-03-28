@@ -44,6 +44,19 @@ Project memory and agent-local working memory are part of the harness, not an af
 Harnesses should stay usable over time.
 GC is included so memory and guidance can be pruned, compressed, and kept high-signal.
 
+## Implementation Principles
+
+Harness-first. Policy-driven. Guardrail-oriented.
+
+- `AGENTS.md` is the entrypoint, not the whole system.
+- The harness exists to shape agent behavior, not just generate markdown.
+- Prefer routing, policy, workflow, and guardrails over broad project narration.
+- Load the minimum useful context before acting.
+- Keep README human-facing; keep agent rules in harness files.
+- Separate short-term task memory from durable project memory.
+- Test harness quality through real agent sessions, not only static file checks.
+- Prefer one shared harness for collaboration unless separation is clearly necessary.
+
 ## CLI
 
 Primary command:
@@ -105,8 +118,3 @@ See [TESTING.md](./TESTING.md).
 ## License
 
 MIT
-
-## Agent integration
-
-The harness keeps agent support lightweight through `_harness/agents.md`.
-It defines integration, role mapping, and memory boundaries without trying to replace the user's existing Codex/Claude/other agent setup.

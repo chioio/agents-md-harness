@@ -2,63 +2,69 @@
 
 ## Goal
 
-Turn a prompt-driven conversation into an initial working harness by generating all core files.
+Turn a prompt-driven conversation into an initial working harness.
+Focus on routing, policy, workflow, memory, GC, and guardrails before broad project narration.
 
 ## CRITICAL RULES
 
 - **DO NOT skip user interaction**
 - **DO NOT generate files before collecting user input**
 - **MUST go through all stages and ask questions**
+- Ask one small batch at a time
 - Each stage requires user response before proceeding
-- Only generate files in Stage 5 after completing Stages 1-4
+- Summarize before generation and wait for confirmation
+- Do not invent extra files or layers unless the user explicitly wants them
 
-## Stage 1 — Understand the project
+## Stage 1 — Understand the project and task types
 
 Ask:
 
 - What does this project do?
 - What kind of tasks should agents help with?
-- Is this a solo repo or a team/agent-team repo?
 - What language should documentation be in?
 
-## Stage 2 — Understand execution style
+## Stage 2 — Understand workflow and confirmation boundaries
 
 Ask:
 
 - What are the main workflows?
 - What should the agent do by default?
 - What should always require confirmation?
+- What usually does not require confirmation?
 
-## Stage 3 — Understand structure and rules
+## Stage 3 — Understand structure, routing, and boundaries
 
 Ask:
 
 - What directories/modules matter most?
+- How should README, harness docs, code, and memory stay separated?
 - Are there protected areas the agent should avoid?
 - Are there stack-specific commands or conventions?
 - Any hard constraints or preferences?
 
-## Stage 4 — Understand agent integration
+## Stage 4 — Understand memory and GC
 
 Ask:
 
-- Is this a single-agent or multi-agent project?
-- Should the harness integrate with existing local agents?
-- What lightweight roles need to be mapped?
-
-## Stage 5 — Understand memory
-
-Ask:
-
-- Should the harness keep project memory?
+- What should count as durable project memory?
 - Should short-term memory be agent-specific?
+- When should short-term memory be updated?
+- Are there rules for pruning, compressing, or discarding noisy memory?
 
 Default model:
 
 - shared long-term memory: `_harness/memory/project.md`
 - short-term local memory: `_harness/memory/agents/*.local.md`
 
-## Stage 5 — Generate files
+## Stage 5 — Understand multi-agent needs
+
+Ask:
+
+- Is this a single-agent or multi-agent project?
+- Should the harness integrate with existing local agents or roles?
+- What lightweight roles should be recognized?
+
+## Stage 6 — Generate files
 
 Using templates in `_harness/.setup/templates/`, generate:
 
@@ -69,10 +75,18 @@ Using templates in `_harness/.setup/templates/`, generate:
 5. `_harness/workflow.md` — project-specific workflows
 6. `_harness/memory/project.md` — initial project memory
 
-## Stage 7 — Review
+Generation priorities:
+
+- keep the harness minimal and composable
+- prefer policy, routing, workflow, and guardrails over broad narration
+- reflect real confirmation boundaries and memory rules
+- do not create `_harness/agents.md`
+
+## Stage 7 — Review and handoff
 
 Summarize:
 
 - what was generated
 - what defaults were assumed
-- how to evolve the harness later (via propose-review-apply workflow)
+- which decisions should remain local vs become long-term memory
+- how to evolve the harness later through review and explicit updates

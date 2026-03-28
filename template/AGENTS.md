@@ -27,10 +27,11 @@ If `_harness/` core files (readme.md, routing.md, catalog.md, rules.md, workflow
 1. Read `_harness/.setup/PROMPT.md` and `_harness/.setup/FLOW.md`
 2. Tell the user: "I need to set up the harness through a conversation. Let me ask you some questions."
 3. Go through each stage in FLOW.md, asking questions and waiting for responses:
-   - Stage 1: Project understanding
-   - Stage 2: Execution style
-   - Stage 3: Structure and rules
-   - Stage 4: Memory model
+   - Stage 1: Project and task types
+   - Stage 2: Workflow and confirmation boundaries
+   - Stage 3: Structure, routing, and boundaries
+   - Stage 4: Memory and GC model
+   - Stage 5: Multi-agent needs
 4. After collecting all answers, summarize and ask: "Should I generate the harness files with this configuration?"
 5. Only after user confirms, generate files using templates in `_harness/.setup/templates/`
 
@@ -78,5 +79,3 @@ This harness evolves with the project:
 - Core harness files can be updated through user-approved proposals
 - When harness is insufficient, propose changes and wait for approval
 - See `_harness/rules.md` for evolution rules and risk levels
-
-- Agent integration lives in `_harness/agents.md`.
