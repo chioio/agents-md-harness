@@ -1,6 +1,9 @@
 node_modules/
 *.tgz
-tmp/
+.tmp/
 .DS_Store
 
 *.local.json
+
+# harness
+_harness/memory/agents/*.local.md

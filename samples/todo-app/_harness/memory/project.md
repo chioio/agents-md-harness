@@ -1,6 +1,6 @@
 ---
-title: be-todo-app-project-memory
-project: be-todo-app
+title: todo-app-project-memory
+project: todo-app
 language: zh-CN
 layer: memory
 ---
@@ -9,9 +9,11 @@ layer: memory
 
 ## 长期上下文
 
-- 这是一个与 `fe-todo-app` 呼应的基于 Golang 的 TODO App 后端项目。
+- 这是一个全栈 TODO App 项目。
+- `fe/` 是基于 Vite 8、React、TanStack Router、Tailwind CSS 4 的前端。
+- `be/` 是基于 Golang 的后端服务。
 - 文档语言使用中文。
-- 该项目支持产品、架构、开发、测试多角色 agent 协作。
+- 该项目支持产品、架构、开发、测试、UI/UX 多角色 agent 协作。
 - 默认执行方式是先设计 / 对齐，再实现。
 - 默认采用测试驱动开发思路。
 
@@ -23,6 +25,7 @@ layer: memory
 - 架构决策
 - 失败案例
 - 测试结论
+- UI 规范
 - 接口约定
 
 ## 更新规则
