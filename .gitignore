@@ -4,6 +4,7 @@ node_modules/
 .DS_Store
 
 *.local.json
+*.local.md
 
 # harness
 _harness/memory/agents/*.local.md

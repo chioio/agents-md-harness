@@ -44,6 +44,19 @@ agent 不应该默认把所有内容全读一遍。
 harness 需要随着时间保持可用。
 GC 的存在，就是为了让 memory 和说明层能持续裁剪、压缩、保持高信号。
 
+## 实现原则
+
+Harness-first. Policy-driven. Guardrail-oriented.
+
+- `AGENTS.md` 是入口，不是全部。
+- harness 的目标是约束 agent 行为，不只是生成 Markdown。
+- 优先产出 routing、policy、workflow、guardrails，而不是泛项目介绍。
+- 先路由，后加载；只读取最小必要上下文。
+- README 面向人类；agent 规则放在 harness。
+- 短期任务记忆与长期项目记忆分层管理。
+- harness 是否有效，应以真实 agent session 验证，而不是只看静态文件。
+- 多 agent 协作默认共享一套 harness，除非确有必要再拆分。
+
 ## CLI
 
 主命令：
@@ -105,7 +118,3 @@ npx file:. setup my-project
 ## License
 
 MIT
-
-## Agent 集成
-
-`_harness/agents.md` 只定义 agent 接入、角色映射和 memory 边界，不重做一整套内置 agent 人设。

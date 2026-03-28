@@ -10,6 +10,7 @@ scope: structure-lookup
 - `AGENTS.md` — maintainer entrypoint
 - `_harness/` — maintainer harness
 - `template/` — user-facing template
+- `samples/` — runtime evaluation scenarios
 - `tests/` — repo-level structure tests and session task corpus
 - `TESTING.md` — testing method for the project itself
 
@@ -29,6 +30,7 @@ scope: structure-lookup
 ## Tests
 
 - `tests/harness/` — structure and contract tests
+- `tests/runtime/README.md` — runtime evaluation workflow
 - `tests/runtime/tasks.json` — fresh-session task corpus
 
 ## Maintainer harness
@@ -37,7 +39,6 @@ scope: structure-lookup
 - `_harness/catalog.md` — structure lookup
 - `_harness/rules.md` — maintainer constraints
 - `_harness/routing.md` — task routing
-- `_harness/agents.md` — agent integration model
 - `_harness/workflow.md` — development workflows
 - `_harness/gc/` — GC policy and flow
 - `_harness/memory/` — project and agent memory

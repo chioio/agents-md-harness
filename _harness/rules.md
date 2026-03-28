@@ -9,40 +9,46 @@ scope: constraints
 
 - Root files describe how to maintain this repository.
 - `template/` defines end-user output.
-- Do not use template files to express repo-internal maintainer policy.
-- Keep repo-self-use vs template-output language explicit in docs.
+- `samples/` is for runtime evaluation, not template source.
+- Do not use template files to express repo-internal policy.
+- Keep repo self-use, template output, and sample runtime language explicit.
 
 ## README rules
 
-- `README.md` and `README.zh-CN.md` are for humans trying to understand the project.
-- Do not turn the README into agent-operating policy, maintainer workflow dump, or internal constraint storage.
-- Keep README focused on project value, core concept, usage, and high-level repository structure.
-- Put agent instructions, maintainer constraints, and execution procedures in root `AGENTS.md` and root `_harness/*` instead.
-- When one README changes in user-visible meaning, sync the other language version in the same change.
-- If one README intentionally lags, state that explicitly in the PR or commit context; do not let them drift silently.
+- `README.md` and `README.zh-CN.md` are for humans, not agents.
+- Keep README focused on project value, usage, and high-level structure.
+- Do not dump agent rules, memory policy, or maintainer workflow into README.
+- Sync both README languages when user-visible meaning changes.
+- Move agent instructions and maintainer guardrails into root `AGENTS.md` and root `_harness/*`.
 
 ## Documentation rules
 
-- Public docs must match the current repository structure and CLI behavior.
-- When documenting generated output, distinguish between:
+- Public docs must match the real repository structure and CLI behavior.
+- When describing generated output, distinguish between:
   - files copied immediately by `setup`
   - files generated later by the guided setup conversation
-- When updating docs for user-facing behavior, check whether `README.md`, `README.zh-CN.md`, and `template/` all still agree.
+- When docs change user-visible behavior, re-check `README.md`, `README.zh-CN.md`, and `template/` for consistency.
 
 ## Template rules
 
-- Keep the generated template minimal, reusable, and framework-agnostic where possible.
+- Keep template output minimal, reusable, and framework-agnostic where possible.
 - Validate template-affecting changes with `pnpm test:cli`.
-- Preserve safe overwrite behavior unless the user explicitly asks for different CLI semantics.
+- Preserve safe overwrite behavior unless CLI semantics are intentionally changed.
+
+## Testing rules
+
+- Use `pnpm test:harness` for sample structure coverage.
+- Use `TESTING.md` and `tests/runtime/` for fresh-session and multi-agent evaluation guidance.
+- Do not treat markdown text quality checks as the main proof of harness effectiveness.
 
 ## Release rules
 
 - Use Changesets for publish-relevant changes.
-- Run `pnpm changeset` for package or user-visible documentation changes that should ship.
+- Run `pnpm changeset` when package behavior or user-visible shipping docs should release.
 - Treat GitHub Actions as the standard publish path.
 
 ## Style rules
 
 - Run `pnpm format` before commit when touching tracked files.
 - Follow Conventional Commits.
-- Prefer precise wording over marketing-heavy wording in maintainer docs.
+- Prefer precise guardrails over slogan-like wording.
