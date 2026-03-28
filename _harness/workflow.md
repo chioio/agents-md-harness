@@ -14,7 +14,7 @@ scope: workflows
 2. Update the smallest correct layer.
 3. If `README.md` changes in meaning, sync `README.zh-CN.md` in the same pass.
 4. Re-check examples, file paths, command names, and generated-output descriptions against the real repository.
-5. If the doc change affects template semantics, check whether `template/` or `samples/` also needs updating.
+5. If the doc change affects template semantics, check whether `template/` or structure tests also need updating.
 6. Run `pnpm format` if needed.
 
 ## CLI development
@@ -34,7 +34,7 @@ scope: workflows
 2. Validate with `pnpm test:cli`.
 3. Update public docs if generated output or setup flow changed.
 4. Sync both README languages for user-visible changes.
-5. Decide whether one or more `samples/` fixtures should be regenerated or revised for parity.
+5. Update structure tests if needed.
 6. Create a changeset if publish-relevant.
 7. Commit.
 
@@ -47,30 +47,29 @@ scope: workflows
 
 ## Harness effectiveness testing
 
-Use this workflow when you want to test whether the harness is actually useful, not just present.
+Use this workflow when you want to test whether the harness actually changes agent behavior.
+Default runtime scenario: `samples/todo-app`.
 
-### 1. Setup usability
+### 1. Contract checks
 
-- run `pnpm test:cli` or an equivalent `setup` run into a disposable target
-- confirm the starter structure is created as expected
-- confirm an agent can continue from `_harness/.setup/` and generate the core harness files
+- run `pnpm test:cli`
+- run `pnpm test:harness`
+- treat these as structure guards for template output and `samples/todo-app`
 
-### 2. Routing quality
+### 2. Fresh-session checks
 
-- give the agent tasks from different categories, such as:
-  - README update
-  - CLI change
-  - template change
-  - frontend/backend sample validation
-- check whether the agent loads the smallest relevant file set first instead of reading everything
-- check whether the agent routes to the correct layer: root docs, `template/`, or `samples/`
+- open a fresh agent session in `samples/todo-app`
+- give it a task from `tests/runtime/tasks.json`
+- check whether it starts from `AGENTS.md`
+- check whether it loads the smallest useful harness set first
+- check whether it routes to the correct layer instead of reading everything
 
-### 3. Rules adherence
+### 3. Boundary checks
 
-- test tasks with easy-to-miss boundaries
+- test tasks with easy-to-miss confirm boundaries
 - confirm the agent keeps README human-facing
-- confirm the agent syncs `README.md` and `README.zh-CN.md` when needed
 - confirm the agent does not confuse repo self-use guidance with template output
+- confirm risky tasks are aligned or confirmed before implementation
 
 ### 4. Memory and GC behavior
 
@@ -78,22 +77,15 @@ Use this workflow when you want to test whether the harness is actually useful, 
 - inspect whether short-term context stays local and task-scoped
 - inspect whether GC guidance helps keep memory compact instead of noisy
 
-### 5. Multi-agent consistency
+### 5. Consistency checks
 
-- give similar tasks to multiple agents or across multiple runs
-- check whether they make similar routing and boundary decisions
-- check whether they interpret README, template, samples, and root harness roles consistently
-
-### 6. Fixture-project checks
-
-- use `samples/fe-todo-app` to test frontend-oriented harness behavior
-- use `samples/be-todo-app` to test backend-oriented harness behavior
-- use `pnpm test:harness` for repo-level fixture assertions
-- treat `tests/harness/run.js` as the minimal contract test for fixture structure and harness metadata
+- repeat the same task across multiple fresh sessions in `samples/todo-app`
+- check whether routing and boundary decisions stay broadly consistent
+- use multi-agent comparison when useful, but keep fresh-session behavior as the primary signal
 
 ### Pass criteria
 
-The harness is working if agents become more consistent, less noisy, and less likely to edit the wrong layer while still completing realistic tasks.
+The harness is working if fresh-session agents become more consistent, less noisy, more likely to start from `AGENTS.md`, and less likely to edit the wrong layer.
 
 ## Release
 
