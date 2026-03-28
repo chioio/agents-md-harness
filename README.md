@@ -9,6 +9,7 @@ It gives a project a small but structured instruction layer:
 - a root `AGENTS.md` entrypoint
 - a modular `_harness/` directory
 - setup scaffolding for project-specific markdown generation
+- a `skills/` area for reusable project and harness capabilities
 - memory and GC primitives for longer-running agent workflows
 
 ## Why

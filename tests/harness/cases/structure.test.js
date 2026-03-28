@@ -32,6 +32,9 @@ module.exports = function runStructureTests(ctx) {
       `${sample}/_harness/gc/readme.md`,
       `${sample}/_harness/skills/readme.md`,
       `${sample}/_harness/skills/template.md`,
+      `${sample}/_harness/skills/harness/SKILL.md`,
+      `${sample}/_harness/skills/harness/audit.py`,
+      `${sample}/_harness/skills/harness/token_audit.py`,
       `${sample}/_harness/memory/agents/.gitkeep`,
     ].forEach((rel) => assert.ok(exists(rel), `missing ${rel}`));
   });

@@ -1,5 +1,6 @@
 const { root, read, exists } = require("./helpers");
 const runStructureTests = require("./cases/structure.test");
+const runForceCleanupTests = require("./cases/force-cleanup.test");
 
 let failed = false;
 
@@ -16,6 +17,7 @@ function test(name, fn) {
 }
 
 runStructureTests({ root, read, exists, test });
+runForceCleanupTests({ root, read, exists, test });
 
 if (!failed) {
   console.log("\nHarness structure tests passed.");

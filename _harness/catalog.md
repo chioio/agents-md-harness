@@ -26,6 +26,7 @@ scope: structure-lookup
 - `template/_harness/.setup/templates/` — generation templates for harness files
 - `template/_harness/gc/` — GC logic
 - `template/_harness/memory/` — memory dirs
+- `template/_harness/skills/` — reusable project and harness skills
 
 ## Tests
 

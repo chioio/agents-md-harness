@@ -1,1 +1,3 @@
 _harness/memory/agents/*.local.md
+__pycache__/
+*.pyc

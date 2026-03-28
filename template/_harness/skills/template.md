@@ -18,6 +18,7 @@ Describe the practical goal of this skill.
 ## When to use
 
 Describe the situations where this skill should be applied.
+If the skill belongs to a specific domain such as harness self-audit, place it under a matching subdirectory like `skills/harness/`.
 
 ## Procedure
 

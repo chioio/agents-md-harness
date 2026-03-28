@@ -9,6 +9,7 @@
 - 根 `AGENTS.md` 入口
 - 模块化的 `_harness/` 目录
 - 用于后续生成项目说明 Markdown 的 setup 脚手架
+- 用于复用项目能力和 harness 自检能力的 `skills/` 区域
 - 面向长期 agent 工作流的 memory 与 GC 基础能力
 
 ## Why
