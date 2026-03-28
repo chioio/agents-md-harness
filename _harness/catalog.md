@@ -10,8 +10,8 @@ scope: structure-lookup
 - `AGENTS.md` — maintainer entrypoint
 - `_harness/` — maintainer harness
 - `template/` — user-facing template
-- `samples/` — frontend/backend fixture projects for harness testing
-- `tests/` — repo-level test cases and runners
+- `tests/` — repo-level structure tests and session task corpus
+- `TESTING.md` — testing method for the project itself
 
 ## CLI
 
@@ -25,6 +25,11 @@ scope: structure-lookup
 - `template/_harness/.setup/templates/` — generation templates for harness files
 - `template/_harness/gc/` — GC logic
 - `template/_harness/memory/` — memory dirs
+
+## Tests
+
+- `tests/harness/` — structure and contract tests
+- `tests/runtime/tasks.json` — fresh-session task corpus
 
 ## Maintainer harness
 

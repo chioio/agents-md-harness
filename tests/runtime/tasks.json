@@ -1,0 +1,190 @@
+[
+  {
+    "id": "fe-minimal-routing",
+    "category": "routing",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "在 fe/ 中新增一个 TODO 列表空状态组件。先判断这是 FE 任务，说明应先加载哪些最小必要 harness 文档，再开始设计与实现。",
+    "expectation": [
+      "先从 AGENTS.md 进入",
+      "优先加载 catalog.md、rules.md、workflow.md",
+      "不默认先读 readme.md 或 memory/project.md",
+      "先写短期任务记忆"
+    ]
+  },
+  {
+    "id": "be-minimal-routing",
+    "category": "routing",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "在 be/ 中新增一个标记 TODO 完成状态的 RESTful handler。先判断这是 BE 任务，说明最小工作集和目标目录，再进入设计与实现。",
+    "expectation": [
+      "先从 AGENTS.md 进入",
+      "优先加载 catalog.md、rules.md、workflow.md",
+      "能定位 be/internal/httpapi 与 be/internal/todo",
+      "先写短期任务记忆"
+    ]
+  },
+  {
+    "id": "fullstack-api-alignment",
+    "category": "fullstack",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "为 TODO 列表增加“切换完成状态”能力，需要同时改 FE 调用和 BE API。先做 FE / BE 契约与模块分层对齐，再决定是否实现。",
+    "expectation": [
+      "识别为 FE + BE 联动任务",
+      "先对齐 API 契约与分层边界",
+      "识别是否涉及需要确认的契约变更",
+      "避免只改一侧代码"
+    ]
+  },
+  {
+    "id": "product-doc-output",
+    "category": "product",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "为 TODO App 输出一版简洁的产品说明文档，明确核心用户流程、功能范围和暂不支持项，并判断哪些稳定信息值得进入长期记忆。",
+    "expectation": [
+      "先走产品任务路径",
+      "输出中文产品文档",
+      "将稳定产品决策与范围沉淀到长期记忆候选",
+      "不把 agent 操作规则写进产品文档"
+    ]
+  },
+  {
+    "id": "architecture-doc-output",
+    "category": "architecture",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "为 todo-app 输出一版全栈架构说明，覆盖 FE、BE、HTTP 层、业务层和 FE-BE 对接方式。先给方案，再判断是否需要用户确认后落文档。",
+    "expectation": [
+      "识别为架构任务",
+      "先方案后实现",
+      "强调 HTTP 层与业务逻辑层边界",
+      "涉及架构决策时先确认"
+    ]
+  },
+  {
+    "id": "readme-boundary",
+    "category": "boundary",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "更新 todo-app 的 README 人类说明文案，只介绍项目用途、运行方式和目录，不要把 harness 规则、memory 规则、内部维护约束写进去。",
+    "expectation": [
+      "保持 README 面向人类",
+      "不把 agent 规则写进 README",
+      "能区分 README 与 _harness 的职责边界"
+    ]
+  },
+  {
+    "id": "risky-architecture-confirmation",
+    "category": "confirmation",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "准备把当前 FE / BE 共享 harness 拆成 fe/ 和 be/ 各自独立的一套 harness。先判断这是否属于高风险变更，是否必须先确认。",
+    "expectation": [
+      "识别为高风险架构/模块决策",
+      "先确认，不直接改",
+      "说明为什么属于破坏性更新"
+    ]
+  },
+  {
+    "id": "normal-fe-no-confirm",
+    "category": "confirmation",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "给前端 TODO 项补一个普通交互测试，不改变 API、不改变信息架构、不改共享 harness。判断是否需要先确认。",
+    "expectation": [
+      "识别为普通 FE/测试任务",
+      "不应过度确认",
+      "可以直接进入设计与实现"
+    ]
+  },
+  {
+    "id": "short-term-memory-cycle",
+    "category": "memory",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "开始一个前后端联调任务时，先写一次短期任务记忆；任务结束后，再写一次结果更新；并说明用户 review 后如何继续更新。",
+    "expectation": [
+      "任务开始写一次短期记忆",
+      "任务结束写一次短期记忆",
+      "用户 review 后继续更新短期记忆",
+      "不把临时执行细节错误写入长期记忆"
+    ]
+  },
+  {
+    "id": "long-term-memory-decision",
+    "category": "memory",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "团队决定 TODO API 统一采用 /api/v1/todos，并固定响应错误结构。判断这是否应该进入长期记忆，并说明应写入什么类型的信息。",
+    "expectation": [
+      "识别为稳定接口约定",
+      "建议写入 memory/project.md",
+      "沉淀为长期规则而非任务日志"
+    ]
+  },
+  {
+    "id": "gc-noise-control",
+    "category": "gc",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "连续几轮任务后，短期记忆里堆积了重复的实现细节、失败尝试和过时计划。判断应该如何做 GC，哪些内容保留，哪些内容压缩或删除。",
+    "expectation": [
+      "能区分短期噪音与长期稳定信息",
+      "优先压缩重复和过时内容",
+      "保留仍影响当前任务的关键上下文"
+    ]
+  },
+  {
+    "id": "multi-agent-role-split",
+    "category": "multi-agent",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "把“新增 TODO 创建流程”拆给产品、架构、开发、测试、UI/UX 五类 agent 协作完成。要求判断每类 agent 该关注什么，以及它们共享哪一套 harness 与记忆。",
+    "expectation": [
+      "正确划分多角色职责",
+      "保持一套共享 harness",
+      "说明共享长期记忆与各自短期记忆的边界",
+      "避免每个角色各写一套规则"
+    ]
+  },
+  {
+    "id": "multi-agent-consistency",
+    "category": "multi-agent",
+    "level": "deep",
+    "scene": "samples/todo-app",
+    "task": "比较多个 agent 对同一个 FE-BE 联调任务的判断，检查它们是否会对任务分类、最小加载集合、确认边界和 memory 使用做出大体一致的选择。",
+    "expectation": [
+      "任务分类大体一致",
+      "最小加载集合大体一致",
+      "确认边界大体一致",
+      "memory 使用方式大体一致"
+    ]
+  },
+  {
+    "id": "sample-structure-contract",
+    "category": "contract",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "验证 todo-app 样例是否保持一套共享 harness、包含 FE 与 BE 目录，并具备 memory、gc、skills 等基础结构 contract。",
+    "expectation": [
+      "识别共享 harness 结构",
+      "识别 fe/ 与 be/ 双目录",
+      "检查 memory、gc、skills 基础目录"
+    ]
+  },
+  {
+    "id": "testing-method",
+    "category": "testing",
+    "level": "smoke",
+    "scene": "samples/todo-app",
+    "task": "说明这个项目应该怎么测：哪些由 pnpm test:cli 和 pnpm test:harness 保底，哪些必须在 samples/todo-app 的 fresh session 与多 agent 场景里验证。",
+    "expectation": [
+      "区分 contract 测试与运行时测试",
+      "明确 samples/todo-app 是主运行时场景",
+      "明确 fresh session 与多 agent 验证重点"
+    ]
+  }
+]

@@ -24,7 +24,6 @@ Route by task before loading more files.
 - if the change is about **how this repository is maintained**, edit root `AGENTS.md` or root `_harness/*`
 - if the change is about **what users receive**, edit `template/`
 - if the change is about **public human-facing project explanation**, edit `README.md` and sync `README.zh-CN.md`
-- if the change is about **example/demo behavior**, inspect whether `samples/` also needs updating
 
 ## Principle
 

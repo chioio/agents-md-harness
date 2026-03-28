@@ -1,71 +1,34 @@
-# AGENTS.md-harness
+# agents-md-harness
 
-> 🪄 Turn `AGENTS.md` into an agent-usable harness.
+Turn AGENTS.md into an agent-usable harness.
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
+`agents-md-harness` is a minimal CLI that scaffolds a modular AGENTS.md-based harness for agent-driven projects.
 
-`agents-md-harness` helps turn `AGENTS.md` from a static instruction file into a usable operating layer for LLM-driven workflows.
+It gives a project a small but structured instruction layer:
 
-Instead of relying on one oversized prompt, it uses:
-
-- `AGENTS.md` as the entrypoint
-- `_harness/` as the modular instruction system
-- setup, memory, and GC as built-in lifecycle parts
+- a root `AGENTS.md` entrypoint
+- a modular `_harness/` directory
+- setup scaffolding for project-specific markdown generation
+- memory and GC primitives for longer-running agent workflows
 
 ## Why
 
-`AGENTS.md` is becoming a common discovery file for AI coding agents.
-But in practice, a single giant document is often hard to maintain, hard to evolve, and inefficient for models to use.
+Most `AGENTS.md` files grow into a single flat document.
+That makes them harder for agents to route, load selectively, and maintain over time.
 
-This project explores a more practical structure:
+This project turns that single entry file into a lightweight harness:
 
-- start with a thin entrypoint
-- route before loading context
-- keep memory separate from task instructions
-- make harness setup explicit instead of implicit
-- let the system evolve as the project evolves
-
-## What `setup` gives you
-
-Run:
-
-```bash
-npx agents-md-harness setup my-project
-```
-
-It copies a starter structure like this:
-
-```text
-AGENTS.md
-_harness/
-  .setup/
-  gc/
-  memory/
-  skills/
-```
-
-Then you ask your model:
-
-> Help me setup the harness
-
-The model uses `_harness/.setup/` to guide a short conversation and generate project-specific files such as:
-
-```text
-_harness/
-  readme.md
-  routing.md
-  catalog.md
-  rules.md
-  workflow.md
-  memory/project.md
-```
+- `AGENTS.md` stays short and acts as the entrypoint
+- `_harness/` holds modular docs for routing, rules, catalog, workflow, memory, and GC
+- agents can load only the context they need
+- the harness can keep evolving instead of collapsing into one giant file
 
 ## Core ideas
 
-### Prompt-first setup
+### AGENTS.md as an entrypoint
 
-A good harness depends on the actual project.
-So the template starts with a guided conversation, then generates the core files from that context.
+Keep the root file short.
+It should tell an agent what kind of project it is in, where to route next, and what must be confirmed before risky changes.
 
 ### Modular context loading
 
@@ -80,15 +43,6 @@ Project memory and agent-local working memory are part of the harness, not an af
 
 Harnesses should stay usable over time.
 GC is included so memory and guidance can be pruned, compressed, and kept high-signal.
-
-## Sample project
-
-This repo also includes `samples/fe-todo-app` and `samples/be-todo-app`, generated-and-customized fixtures used to test:
-
-- repeated `setup` runs
-- multi-agent behavior
-- memory and GC flows
-- quality of generated harness markdown
 
 ## CLI
 
@@ -111,7 +65,7 @@ npx file:. setup my-project
 
 ## Repository layout
 
-This repository has two layers:
+This repository has three working areas:
 
 ### Repo self-use
 
@@ -121,9 +75,10 @@ The root `AGENTS.md` and root `_harness/` are for maintaining this repository it
 
 Everything under `template/` is what the CLI copies into user projects.
 
-### Sample fixtures
+### Sample scenario
 
-Everything under `samples/` is for testing and demonstrating generated harness behavior in realistic frontend and backend apps.
+`samples/todo-app/` is the runtime evaluation scenario.
+It provides a concrete full-stack workspace for testing routing, memory, GC, doc generation, and multi-agent collaboration under one shared harness.
 
 ## Status
 
@@ -131,8 +86,21 @@ Current focus:
 
 - improving setup flow
 - improving generated harness quality
+- validating fresh-session agent behavior
 - testing memory / GC patterns
-- validating multi-agent usage
+- improving session-based harness evaluation
+
+## Testing
+
+The main test target is fresh-session agent behavior inside `samples/todo-app`.
+
+Use:
+
+- `pnpm test:cli`
+- `pnpm test:harness`
+- fresh-session checks in `samples/todo-app` using tasks from `tests/runtime/tasks.json`
+
+See [TESTING.md](./TESTING.md).
 
 ## License
 

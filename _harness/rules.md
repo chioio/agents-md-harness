@@ -9,7 +9,6 @@ scope: constraints
 
 - Root files describe how to maintain this repository.
 - `template/` defines end-user output.
-- `samples/` contains generated-and-customized fixtures for testing and demonstration; it is not the source template.
 - Do not use template files to express repo-internal maintainer policy.
 - Keep repo-self-use vs template-output language explicit in docs.
 
@@ -35,12 +34,6 @@ scope: constraints
 - Keep the generated template minimal, reusable, and framework-agnostic where possible.
 - Validate template-affecting changes with `pnpm test:cli`.
 - Preserve safe overwrite behavior unless the user explicitly asks for different CLI semantics.
-
-## Sample rules
-
-- Update `samples/` only when demonstrating or validating intended generated behavior.
-- Do not treat `samples/` as the canonical source of template truth.
-- If template semantics change materially, decide explicitly whether one or more `samples/` fixtures also need to be regenerated or revised.
 
 ## Release rules
 

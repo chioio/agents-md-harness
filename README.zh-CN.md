@@ -1,71 +1,34 @@
-# AGENTS.md-harness
+# agents-md-harness
 
-> 🪄 让 `AGENTS.md` 变成 agent 可用的 harness。
+把 AGENTS.md 变成 agent 可用的 harness。
 
-[English](./README.md) | [简体中文](./README.zh-CN.md)
+`agents-md-harness` 是一个极简 CLI，用来为 agent 驱动项目初始化一套模块化的 AGENTS.md harness 结构。
 
-`agents-md-harness` 想解决的是：把 `AGENTS.md` 从一份静态说明文件，变成适合大模型驱动工作流使用的操作层。
+它会为项目提供一层轻量但成体系的说明基础设施：
 
-它不依赖一份越来越大的总 prompt，而是使用：
+- 根 `AGENTS.md` 入口
+- 模块化的 `_harness/` 目录
+- 用于后续生成项目说明 Markdown 的 setup 脚手架
+- 面向长期 agent 工作流的 memory 与 GC 基础能力
 
-- `AGENTS.md` 作为入口
-- `_harness/` 作为模块化说明系统
-- setup、memory、GC 作为内建生命周期能力
+## Why
 
-## 为什么做这个
+很多项目里的 `AGENTS.md` 最后都会膨胀成一个扁平长文档。
+这样会让 agent 更难做路由、按需加载，也更难长期维护。
 
-`AGENTS.md` 正在变成 AI coding agent 的常见发现入口。
-但在真实项目里，一份巨大的单文档通常很难维护、很难演进，也不利于模型高质量使用。
+这个项目的目标，就是把单一入口文件转成轻量 harness：
 
-这个项目探索一种更实用的结构：
+- `AGENTS.md` 保持精简，只承担入口职责
+- `_harness/` 承载 routing、rules、catalog、workflow、memory、GC 等模块
+- agent 可以只加载当前任务真正需要的上下文
+- harness 可以持续演进，而不是重新坍塌成一个超大文件
 
-- 用一个薄入口开始
-- 先路由，再加载上下文
-- 把 memory 和任务说明分开
-- 把 harness setup 变成显式流程，而不是隐式约定
-- 让这套系统随着项目一起演进
+## Core ideas
 
-## `setup` 会先给你什么
+### 把 AGENTS.md 当成入口文件
 
-执行：
-
-```bash
-npx agents-md-harness setup my-project
-```
-
-它会先复制这样的起始结构：
-
-```text
-AGENTS.md
-_harness/
-  .setup/
-  gc/
-  memory/
-  skills/
-```
-
-然后你再对模型说：
-
-> Help me setup the harness
-
-模型会基于 `_harness/.setup/` 发起一轮简短对话，并生成项目化文件，例如：
-
-```text
-_harness/
-  readme.md
-  routing.md
-  catalog.md
-  rules.md
-  workflow.md
-  memory/project.md
-```
-
-## 核心理念
-
-### Prompt-first setup
-
-一套好用的 harness，必须依赖具体项目上下文。
-所以模板先通过引导式对话收集信息，再据此生成核心文件。
+让根文件保持短小。
+它主要负责告诉 agent：这里是什么项目、下一步该去哪里、哪些高风险改动必须先确认。
 
 ### 模块化上下文加载
 
@@ -80,15 +43,6 @@ agent 不应该默认把所有内容全读一遍。
 
 harness 需要随着时间保持可用。
 GC 的存在，就是为了让 memory 和说明层能持续裁剪、压缩、保持高信号。
-
-## Sample 样例项目
-
-仓库里还包含 `samples/fe-todo-app` 和 `samples/be-todo-app`，它们是生成后再定制的样例，用来测试：
-
-- 重复执行 `setup`
-- multi-agent 行为
-- memory / GC 流程
-- 生成出的 harness Markdown 质量
 
 ## CLI
 
@@ -111,7 +65,7 @@ npx file:. setup my-project
 
 ## 仓库结构
 
-这个仓库有两层：
+这个仓库有三个工作区域：
 
 ### 仓库自用
 
@@ -121,9 +75,10 @@ npx file:. setup my-project
 
 `template/` 下的内容，才是 CLI 会复制到用户项目里的内容。
 
-### 样例夹具
+### 场景样例
 
-`samples/` 下的内容用于测试和演示生成后的 harness 在真实前后端应用中的表现。
+`samples/todo-app/` 是运行时测试场景。
+它提供一个共享 harness 的全栈工作区，用来验证 routing、memory、GC、文档生成与多 agent 协作是否真实生效。
 
 ## 当前状态
 
@@ -131,8 +86,21 @@ npx file:. setup my-project
 
 - 改进 setup 流程
 - 改进生成后的 harness 质量
+- 验证 fresh session 下的 agent 行为
 - 测试 memory / GC 模式
-- 验证 multi-agent 使用体验
+- 改进基于 session 的 harness 评估方式
+
+## 测试方法
+
+主测试对象是 `samples/todo-app` 中 fresh session 下的 agent 行为。
+
+当前建议：
+
+- `pnpm test:cli`
+- `pnpm test:harness`
+- 在 `samples/todo-app` 中，使用 `tests/runtime/tasks.json` 中的任务做 fresh session 测试
+
+详见 [TESTING.md](./TESTING.md)。
 
 ## License
 
